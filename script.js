@@ -5,7 +5,7 @@ const period = '90'
 chartHTML.height = 100;
 chartHTML.clientWidth=100
 
-        fetch(`https://api.coingecko.com/api/v3/coins/cardano/market_chart?vs_currency=eur&days=${period}&interval=daily`)
+        fetch(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=ada&market=EUR&apikey=J2WB3Q124ZZC6WN4`)
         .then(function (response) {
         return response.json();
         })
@@ -40,7 +40,7 @@ chartHTML.clientWidth=100
                 prices.push(data[key]['eur'])
             }
             
-            cryptohtml.innerHTML = `<h2>Prices Today</h2><ul style="list-style: none;">${final}</ul>`
+            cryptohtml.innerHTML = `<h2>Coingecko Prices Today</h2><ul style="list-style: none;">${final}</ul>`
         }
 
         // Historical Data as Async for usage with Maximum range for Cardano.
@@ -58,34 +58,38 @@ chartHTML.clientWidth=100
 
             function historicalAppend(data) {
                 let price = [];
-                let label = [];
+                let volume = [];
+                let date = [];
                 x = 1;
                 let d = new Date(Date.now() - period * 24 * 60 * 60 * 1000)
                 
-                for(var key in data["prices"]){
-                    price.push(data["prices"][key][1])
-                    const dateAsText = monthNames[d.getMonth()] + " " + d.getDate()
-                    d.setDate(d.getDate()+1)
-                    label.push(dateAsText)
+                for(var key in data["Time Series (Digital Currency Daily)"]){
+                    price.push(data["Time Series (Digital Currency Daily)"][key]["4a. close (EUR)"])
+                    volume.push(data["Time Series (Digital Currency Daily)"][key]["5. volume"])
+                    date.push(key)
                 }
+
+                let priceOrdered = price.reverse();
+                let volumeOrdered = volume.reverse();
+                let dateOrdered = date.reverse();
                 
-                var N = price.length
+                var N = priceOrdered.length
                 var moveMean = [];
                 for (var i = 0; i < N; i++)
-                {
-                    var mean = (price[i] + price[i-1] + price[i-2])/3.0;
+                {   
+                    var mean = (parseFloat(priceOrdered[i]) + parseFloat(priceOrdered[i-1]) + parseFloat(priceOrdered[i-2]))/3;
                     moveMean.push(mean);
                 }
 
                 new Chart(chartHTML, {
                     type: "line",
-                    label: `Prices in the last ${period}`,
+                    label: `Prices`,
                     data: {
-                      labels: label,
+                      labels: dateOrdered,
                       datasets: [
                         {
                           label: "Price",
-                          data: price,
+                          data: priceOrdered,
                           backgroundColor: "rgba(255, 99, 132, 0.2)",
                           borderColor: "rgba(255,99,132,1)",
                           borderWidth: 1
