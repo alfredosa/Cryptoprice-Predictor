@@ -1,0 +1,14 @@
+* {
+    background-color: black;
+    color: rgb(197, 197, 192);
+    font: Brush Script MT;
+}
+
+body {
+    font-weight: bold;
+    text-align: center;
+}
+
+body > li {
+    float: left;
+}

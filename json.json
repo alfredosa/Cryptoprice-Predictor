@@ -1,0 +1,16 @@
+{
+    "polkadot": {
+        "eur": 15.35,
+        "eur_market_cap": 15589132995.685596,
+        "eur_24h_vol": 1643567060.5448523,
+        "eur_24h_change": -1.295034444448643,
+        "last_updated_at": 1627898859
+    },
+    "cardano": {
+        "eur": 1.12,
+        "eur_market_cap": 35837620325.34694,
+        "eur_24h_vol": 1249627525.2392435,
+        "eur_24h_change": -3.3240295087028047,
+        "last_updated_at": 1627898852
+    }
+}
