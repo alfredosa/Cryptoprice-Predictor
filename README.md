@@ -1,4 +1,4 @@
-# Cryptoprice-Predictor
+# Volume predictor based on price
 
 https://alfredosa.github.io/Cryptoprice-Predictor/
 
