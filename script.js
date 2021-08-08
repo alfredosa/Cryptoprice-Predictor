@@ -1,8 +1,6 @@
 var cryptohtml = document.getElementById("Crpyto");
 var chartHTML = document.getElementById("myChart");
 var tfchart = document.getElementById("tfflow");
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const period = '90'
 chartHTML.height = 100;
 chartHTML.clientWidth=100
 
