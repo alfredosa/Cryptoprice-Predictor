@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cryptonian Analytics</title>
+    <title>Cardano Price Prediction based on Volume</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <header>
-    <h1>Cryptonian Machine Learning Cardano price Prediction</h1>
+    <h1>Machine Learning Algorithm with tensorflow to predict Cardano Price</h1>
+    <h6>Eductational purposes only</h6>
 
 </header>
 <body>
@@ -17,9 +19,11 @@
         </div>
         <h2>Cardano Prices chart</h2>
 
-        <div class="chart-container" style="position: relative; height:50vh; width:98vw">
+        <div class="chart-container" style="position: relative; height:50vh; width:75vw">
             <canvas id="myChart"></canvas>
-          </div>
+        </div>
+
+        
         
     </div>
     <script src="script.js"></script>
